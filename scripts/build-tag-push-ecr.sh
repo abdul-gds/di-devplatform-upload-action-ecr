@@ -3,7 +3,8 @@
 set -eu
 
 echo "building image(s)"
-
+pwd 
+ls -la 
 docker build -t "$ECR_REGISTRY/$ECR_REPO_NAME:$GITHUB_SHA" -f $DOCKERFILE .
 docker push "$ECR_REGISTRY/$ECR_REPO_NAME:$GITHUB_SHA"
 cosign sign --key "awskms:///${CONTAINER_SIGN_KMS_KEY_ARN}" "$ECR_REGISTRY/$ECR_REPO_NAME:$GITHUB_SHA"
