@@ -64,5 +64,8 @@ runs:
         ARTIFACT_BUCKET_NAME: ${{ inputs.artifact-bucket-name }}
         DOCKERFILE: ${{ inputs.dockerfile }}
 
-      run: ${{ github.action_path }}/scripts/build-tag-push-ecr.sh
+      run: | 
+        pwd
+        ls -al
+        ${{ github.action_path }}/scripts/build-tag-push-ecr.sh
       shell: bash
